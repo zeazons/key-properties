@@ -1,19 +1,17 @@
 import React, { forwardRef, useEffect, useRef, useMemo, useState } from "react";
 import { Form } from "semantic-ui-react";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDesktop } from "@fortawesome/free-solid-svg-icons";
-
-import { isEmpty } from "../utils/validationUtils";
+import $ from "jquery";
 
 import Row from "./components/layout/row";
 import RowCenter from "./components/layout/rowCenter";
 import Col from "./components/layout/col";
 import Button from "./components/button";
 import TextField from "./components/inputs/textField";
+
+import * as ValidationConstants from "../constants/validationConstants";
+import { isEmpty } from "../utils/validationUtils";
 
 const keyFn = [
   {
@@ -159,7 +157,9 @@ const otherKey = [
 const KeyProperties = forwardRef(
   ({ id, nodeType, nodeId, eventBloc } = props, ref) => {
     const KeySchema = Yup.object().shape({
-      keySelected: Yup.string().required("This field is required."),
+      keySelected: Yup.string().required(
+        ValidationConstants.VALIDATION_MSG_REQUIRED_FIELD
+      ),
     });
 
     const formik = useFormik({

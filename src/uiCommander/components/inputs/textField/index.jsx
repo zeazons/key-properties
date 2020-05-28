@@ -13,6 +13,7 @@ const TextField = forwardRef((props, ref) => {
     disabled,
     readOnly,
     onChange,
+    onBlur,
     error,
   } = props;
 
@@ -27,6 +28,7 @@ const TextField = forwardRef((props, ref) => {
       disabled={disabled}
       readOnly={readOnly}
       onChange={onChange}
+      onBlur={onBlur}
       error={error}
       ref={ref}
     />
